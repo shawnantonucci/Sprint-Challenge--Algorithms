@@ -108,15 +108,26 @@ class SortingRobot:
 
                 if self.compare_item() == 1:
                     self.swap_item()
-                    self.set_light_on()
-                    print(self._position, "robots position")
+                    print(self._position, "Robots position")
                     print("Moving right - Currently held item", self._item, "Item in front of robot", self.compare_item())
 
                 self.move_left()
                 self.swap_item()
                 self.move_right()
 
+            while self.can_move_left():
+                self.swap_item()
+                self.move_left()
+                print(self._position, "Robots position")
 
+                if self.compare_item() == -1:
+                    self.swap_item()
+                    self.set_light_on()
+
+                self.move_right()
+                self.swap_item()
+                self.move_left()
+                print(self._position, "Robots position")
         pass
 
 
